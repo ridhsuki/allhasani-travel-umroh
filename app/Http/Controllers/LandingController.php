@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Package;
+use App\Models\Testimonial;
 use Illuminate\Http\Request;
 
 class LandingController extends Controller
@@ -11,8 +12,11 @@ class LandingController extends Controller
     {
         $packages = Package::latest()->get();
 
+        $testimonials = Testimonial::where('is_active', true)->latest()->limit(10)->get();
+
         return view('landing', [
-            'packages' => $packages
+            'packages' => $packages,
+            'testimonials' => $testimonials, 
         ]);
     }
 }

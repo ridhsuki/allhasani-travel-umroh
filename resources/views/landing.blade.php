@@ -10,7 +10,7 @@
 
     <x-landing.process />
 
-    <x-landing.testimonials />
+    <x-landing.testimonials :testimonials="$testimonials" />
 
     <x-landing.contact :packages="$packages" />
 

@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             PackageSeeder::class,
             CompanySettingSeeder::class,
+            TestimonialSeeder::class,
         ]);
 
         $this->command->info('Admin user created.');
