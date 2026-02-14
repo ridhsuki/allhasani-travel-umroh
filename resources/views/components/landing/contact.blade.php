@@ -55,35 +55,50 @@
             </div>
 
             <div class="contact-form">
-                <form id="contactForm">
+                <form id="waContactForm" onsubmit="sendToWhatsapp(event)">
+
                     <div class="form-group">
                         <i class="fas fa-user form-icon"></i>
-                        <input type="text" placeholder="Nama Lengkap" required>
+                        <input type="text" id="waName" placeholder="Nama Lengkap" class="form-input" required>
                     </div>
+
                     <div class="form-group">
                         <i class="fas fa-envelope form-icon"></i>
-                        <input type="email" placeholder="Alamat Email" required>
+                        <input type="email" id="waEmail" placeholder="Alamat Email" class="form-input" required>
                     </div>
+
                     <div class="form-group">
                         <i class="fas fa-phone form-icon"></i>
-                        <input type="tel" placeholder="Nomor Telepon/WhatsApp" required>
+                        <input type="tel" id="waPhone" placeholder="Nomor Telepon/WhatsApp" class="form-input"
+                            required>
                     </div>
+
                     <div class="form-group">
                         <i class="fas fa-box form-icon"></i>
-                        <select required>
+                        <select id="waPackage" class="form-input" required>
                             <option value="" disabled selected>Pilih Paket yang Diminati</option>
-                            <option value="ekonomis">Paket Ekonomis (Rp 29.500.000)</option>
-                            <option value="reguler">Paket Reguler (Rp 39.500.000)</option>
-                            <option value="premium">Paket Premium (Rp 59.500.000)</option>
-                            <option value="konsultasi">Konsultasi Gratis</option>
+
+                            <option value="Konsultasi Umum">Konsultasi Gratis / Tanya Jawab</option>
+
+                            @if (isset($packages))
+                                @foreach ($packages as $pkg)
+                                    <option value="{{ $pkg->name }} ({{ $pkg->formatted_price }})">
+                                        {{ $pkg->name }} - {{ $pkg->formatted_price }}
+                                    </option>
+                                @endforeach
+                            @endif
                         </select>
                     </div>
+
                     <div class="form-group">
                         <i class="fas fa-comment form-icon"></i>
-                        <textarea rows="5" placeholder="Pertanyaan atau Pesan Anda" required></textarea>
+                        <textarea id="waMessage" rows="5" placeholder="Pertanyaan atau pesan spesifik Anda..." class="form-input"
+                            required></textarea>
                     </div>
-                    <button type="submit" class="btn" style="width: 100%;"><i class="fas fa-paper-plane"></i> Kirim
-                        Pesan Sekarang</button>
+
+                    <button type="submit" id="btnSubmit" class="btn" style="width: 100%;">
+                        <i class="fas fa-paper-plane"></i> Kirim Pesan Sekarang
+                    </button>
                 </form>
             </div>
         </div>

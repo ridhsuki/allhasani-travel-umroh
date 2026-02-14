@@ -12,6 +12,6 @@
 
     <x-landing.testimonials />
 
-    <x-landing.contact />
+    <x-landing.contact :packages="$packages" />
 
 </x-layouts.landing>

@@ -21,7 +21,7 @@ class CompanySettingSeeder extends Seeder
                 'address_head_office' => "Gedung Menara 165, Lantai 4\nJl. TB Simatupang Kav. 1, Cilandak\nJakarta Selatan, DKI Jakarta 12560",
                 'operational_hours' => 'Senin - Jumat: 08.00 - 17.00 WIB | Sabtu: 09.00 - 13.00 WIB',
 
-                'wa_number_indo' => '+62 21 1234 5678',
+                'wa_number_indo' => '6285877524373',
                 'wa_number_saudi' => '+96 812 3456 7890',
                 'email_primary' => 'info@allhasani-travel.com',
                 'email_secondary' => 'support@allhasani-travel.com',

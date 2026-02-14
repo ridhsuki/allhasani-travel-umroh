@@ -51,33 +51,6 @@ document.getElementById('scrollToTop').addEventListener('click', (e) => {
     });
 });
 
-// Form submission
-document.getElementById('contactForm').addEventListener('submit', function (e) {
-    e.preventDefault();
-
-    // Show loading animation
-    const submitBtn = this.querySelector('button[type="submit"]');
-    const originalText = submitBtn.innerHTML;
-    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengirim...';
-    submitBtn.disabled = true;
-
-    // Simulate API call
-    setTimeout(() => {
-        // Show success message
-        submitBtn.innerHTML = '<i class="fas fa-check"></i> Terkirim!';
-        submitBtn.style.background = 'linear-gradient(135deg, #10B981, #059669)';
-
-        // Reset form and button
-        setTimeout(() => {
-            submitBtn.innerHTML = originalText;
-            submitBtn.style.background = '';
-            submitBtn.disabled = false;
-            alert('Terima kasih! Pesan Anda telah berhasil dikirim. Tim kami akan menghubungi Anda dalam waktu 1x24 jam.');
-            this.reset();
-        }, 2000);
-    }, 1500);
-});
-
 // Testimonial slider
 const testimonialTrack = document.getElementById('testimonialTrack');
 const testimonialSlides = document.querySelectorAll('.testimonial-slide');
