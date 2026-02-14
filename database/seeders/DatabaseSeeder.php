@@ -24,7 +24,8 @@ class DatabaseSeeder extends Seeder
         );
 
         $this->call([
-            PackageSeeder::class
+            PackageSeeder::class,
+            CompanySettingSeeder::class,
         ]);
 
         $this->command->info('Admin user created.');

@@ -2,9 +2,15 @@
      <div class="container header-container">
          <a href="#home" class="logo">
              <div class="logo-icon">
-                 <i class="fas fa-kaaba"></i>
+                 @if ($site_settings->logo_path && Storage::disk('public')->exists($site_settings->logo_path))
+                     <img src="{{ asset('storage/' . $site_settings->logo_path) }}"
+                         alt="Logo {{ $site_settings->company_name }}"
+                         style="height: 40px; width: auto; object-fit: contain;">
+                 @else
+                     <i class="fas fa-kaaba"></i>
+                 @endif
              </div>
-             <div class="logo-text">Rahmah<span>Umroh</span></div>
+             <div class="logo-text">{{ $site_settings->company_name }}</div>
          </a>
 
          <button class="mobile-menu-btn" id="mobileMenuBtn">

@@ -7,7 +7,7 @@
 
         <div class="contact-container">
             <div class="contact-info">
-                <h3>Rahmah Umroh</h3>
+                <h3>{{ $site_settings->company_name }}</h3>
                 <p>Travel umroh terpercaya dengan komitmen memberikan pelayanan terbaik untuk pengalaman ibadah yang
                     bermakna dan tak terlupakan.</p>
 
@@ -16,30 +16,39 @@
                         <i class="fas fa-map-marker-alt"></i>
                         <div>
                             <strong>Alamat Kantor Pusat</strong><br>
-                            Jl. Mekkah Al-Mukarramah No. 25, Jakarta Selatan 12540
+                            {{ $site_settings->address_head_office ?? '-' }}
                         </div>
                     </li>
                     <li>
                         <i class="fas fa-phone"></i>
                         <div>
                             <strong>Hotline & WhatsApp</strong><br>
-                            +62 21 1234 5678 | +62 812 3456 7890
+                            {{ $site_settings->wa_number_indo }}
+                            @if ($site_settings->wa_number_saudi)
+                                | {{ $site_settings->wa_number_saudi }}
+                            @endif
                         </div>
                     </li>
                     <li>
                         <i class="fas fa-envelope"></i>
                         <div>
                             <strong>Email Resmi</strong><br>
-                            info@rahmahumroh.id<br>
-                            booking@rahmahumroh.id
+                            <span>
+                                {{ $site_settings->email_primary }}
+                            </span>
+                            @if ($site_settings->email_secondary)
+                                <br>
+                                <span>
+                                    {{ $site_settings->email_secondary }}
+                                </span>
+                            @endif
                         </div>
                     </li>
                     <li>
                         <i class="fas fa-clock"></i>
                         <div>
                             <strong>Jam Operasional</strong><br>
-                            Senin - Jumat: 08.00 - 17.00 WIB<br>
-                            Sabtu: 09.00 - 15.00 WIB
+                            {!! nl2br(e($site_settings->operational_hours)) !!}
                         </div>
                     </li>
                 </ul>

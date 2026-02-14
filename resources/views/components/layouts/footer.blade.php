@@ -2,15 +2,25 @@
     <div class="container">
         <div class="footer-content">
             <div class="footer-about">
-                <div class="footer-logo">Rahmah<span>Umroh</span></div>
+                <div class="footer-logo">{{ $site_settings->company_name }}</div>
                 <p>Travel umroh terpercaya yang berkomitmen memberikan pelayanan terbaik untuk pengalaman ibadah
                     yang bermakna. Dengan izin resmi dari Kementerian Agama dan pengalaman lebih dari 10 tahun.</p>
                 <div class="social-icons">
-                    <a href="#" style="--i: 0"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" style="--i: 1"><i class="fab fa-instagram"></i></a>
-                    <a href="#" style="--i: 2"><i class="fab fa-whatsapp"></i></a>
-                    <a href="#" style="--i: 3"><i class="fab fa-youtube"></i></a>
-                    <a href="#" style="--i: 4"><i class="fab fa-tiktok"></i></a>
+                    @if ($site_settings->wa_number_indo)
+                        <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $site_settings->wa_number_indo) }}"
+                            target="_blank" style="--i: 0">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    @endif
+                    @if ($site_settings->social_media)
+                        @foreach ($site_settings->social_media as $platform => $url)
+                            @if ($url)
+                                <a href="{{ $url }}" target="_blank" style="--i: {{ $loop->index }}">
+                                    <i class="fab fa-{{ strtolower($platform) }}"></i>
+                                </a>
+                            @endif
+                        @endforeach
+                    @endif
                 </div>
             </div>
 
@@ -29,16 +39,23 @@
             <div class="footer-contact">
                 <h4>Kantor Cabang</h4>
                 <ul>
-                    <li><i class="fas fa-map-marker-alt"></i> <strong>Jakarta:</strong> Jl. Mekkah No. 25</li>
-                    <li><i class="fas fa-map-marker-alt"></i> <strong>Bandung:</strong> Jl. Madinah No. 12</li>
-                    <li><i class="fas fa-map-marker-alt"></i> <strong>Surabaya:</strong> Jl. Ka'bah No. 8</li>
-                    <li><i class="fas fa-map-marker-alt"></i> <strong>Medan:</strong> Jl. Arafah No. 15</li>
+                    @if ($site_settings->branches)
+                        @foreach ($site_settings->branches as $branch)
+                            <li>
+                                <i class="fas fa-map-marker-alt"></i>
+                                <strong>{{ $branch['name'] }}:</strong> {{ $branch['address'] }}
+                            </li>
+                        @endforeach
+                    @else
+                        <li>Belum ada kantor cabang.</li>
+                    @endif
                 </ul>
             </div>
         </div>
 
         <div class="copyright">
-            &copy; 2024 Rahmah Umroh - Travel Umroh Terpercaya. All Rights Reserved. | Design dengan ❤️ untuk
+            &copy; {{ date('Y') }} {{ $site_settings->company_name }} - Travel Umroh Terpercaya. All Rights
+            Reserved. | Design dengan ❤️ untuk
             pengalaman spiritual terbaik @guest
                 | <a href="{{ route('login') }}" style="text-decoration: none; font-weight: 900; color:#fff">
                     Login

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CompanySettingController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\PackageController;
 use App\Http\Controllers\ProfileController;
@@ -17,6 +18,7 @@ Route::middleware('auth')->group(function () {
     Route::prefix('admin')->group(function () {
         Route::get('/dashboard', fn() => view('dashboard'))->name('dashboard');
         Route::resource('packages', PackageController::class)->except(['show']);
+        Route::singleton('settings', CompanySettingController::class)->only('edit', 'update');
     });
 });
 

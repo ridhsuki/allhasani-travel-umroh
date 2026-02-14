@@ -127,7 +127,7 @@
 
     <div class="w-full max-w-md mx-auto">
         <div class="login-card-header">
-            <h2 class="brand-text">Rahmah<span>Umroh</span></h2>
+            <h2 class="brand-text">{{ $site_settings->company_name }}</h2>
             <p class="text-gray-500 mt-2 text-sm">Masuk untuk mengelola perjalanan ibadah Anda</p>
         </div>
 
