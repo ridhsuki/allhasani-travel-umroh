@@ -1,0 +1,6 @@
+@props(['title', 'subtitle'])
+
+<div class="section-title">
+    <h2>{{ $title }}</h2>
+    <p>{{ $subtitle }}</p>
+</div>
