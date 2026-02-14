@@ -18,6 +18,11 @@
              <li><a href="#process">Proses</a></li>
              <li><a href="#testimonials">Testimoni</a></li>
              <li><a href="#contact">Kontak</a></li>
+             @auth
+                 <li>
+                     <a href="{{ route('dashboard') }}">Dashboard</a>
+                 </li>
+             @endauth
          </ul>
      </div>
  </header>

@@ -39,8 +39,11 @@
 
         <div class="copyright">
             &copy; 2024 Rahmah Umroh - Travel Umroh Terpercaya. All Rights Reserved. | Design dengan ❤️ untuk
-            pengalaman spiritual terbaik | <a href="{{ route('login') }}"
-                style="text-decoration: none;font-wight: 900;color:#fff">login</a>
+            pengalaman spiritual terbaik @guest
+                | <a href="{{ route('login') }}" style="text-decoration: none; font-weight: 900; color:#fff">
+                    Login
+                </a>
+            @endguest
         </div>
     </div>
 </footer>
