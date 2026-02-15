@@ -5,7 +5,7 @@
 <meta name="language" content="Indonesian">
 <meta name="revisit-after" content="7 days">
 <meta name="author" content="{{ $site_settings->company_name ?? 'PT Al Hasani Tour & Travel' }}">
-<meta name="theme-color" content="#BFA15F">
+<meta name="theme-color" content="#059669">
 <title>{{ $title ?? 'Paket Umrah & Haji Terpercaya' }} |
     {{ $site_settings->company_name ?? 'PT Al Hasani Tour & Travel' }}</title>
 <meta name="description"
