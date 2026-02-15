@@ -16,20 +16,23 @@
                         <div>
                             <x-input-label for="name" value="Nama Jamaah" />
                             <x-text-input id="name" name="name" type="text" class="mt-1 block w-full"
-                                required />
+                                :value="old('name')" required autofocus />
+                            <x-input-error class="mt-2" :messages="$errors->get('name')" />
                         </div>
 
                         <div>
                             <x-input-label for="title" value="Title / Paket (Cth: Umroh Reguler Jan 2024)" />
                             <x-text-input id="title" name="title" type="text" class="mt-1 block w-full"
-                                required />
+                                :value="old('title')" required />
+                            <x-input-error class="mt-2" :messages="$errors->get('title')" />
                         </div>
 
                         <div>
                             <x-input-label for="content" value="Isi Testimoni" />
                             <textarea name="content" id="content" rows="4"
                                 class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
-                                required></textarea>
+                                required>{{ old('content') }}</textarea>
+                            <x-input-error class="mt-2" :messages="$errors->get('content')" />
                         </div>
 
                         <div>
@@ -58,15 +61,18 @@
                                     </p>
                                 </div>
                             </div>
+                            <x-input-error class="mt-2" :messages="$errors->get('photo')" />
                         </div>
 
                         <div class="flex items-center">
-                            <input type="checkbox" name="is_active" id="is_active" value="1" checked
+                            <input type="checkbox" name="is_active" id="is_active" value="1"
+                                {{ old('is_active', 1) ? 'checked' : '' }}
                                 class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500">
                             <label for="is_active" class="ml-2 text-sm text-gray-600">
                                 Tampilkan di Landing Page?
                             </label>
                         </div>
+                        <x-input-error class="mt-2" :messages="$errors->get('is_active')" />
 
                         <div class="flex justify-end">
                             <x-primary-button>

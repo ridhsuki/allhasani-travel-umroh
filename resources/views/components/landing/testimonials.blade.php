@@ -44,7 +44,7 @@
                     </div>
                 @endif
             @else
-                <div class="text-center py-10 text-gray-500">
+                <div style="text-align: center; padding-top: 40px; padding-bottom: 40px; color: #6b7280;">
                     <p>Belum ada testimoni saat ini.</p>
                 </div>
             @endif

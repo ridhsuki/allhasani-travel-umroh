@@ -28,6 +28,10 @@ class TestimonialController extends Controller
             $data['photo_path'] = $request->file('photo')->store('testimonials', 'public');
         }
 
+        unset($data['photo']);
+
+        $data['is_active'] = $request->has('is_active') ? 1 : 0;
+
         Testimonial::create($data);
 
         return redirect()->route('testimonials.index')->with('success', 'Testimoni berhasil ditambahkan');
