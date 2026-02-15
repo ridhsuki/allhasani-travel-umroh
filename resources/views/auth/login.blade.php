@@ -168,10 +168,12 @@
             <button type="submit" class="btn-primary-custom text-base uppercase tracking-wider">
                 {{ __('Masuk Sekarang') }} <i class="fas fa-arrow-right ml-1"></i>
             </button>
-
-            <div class="text-center mt-6 text-sm text-gray-500">
-                Belum punya akun? <a href="{{ route('register') }}" class="custom-link font-semibold">Daftar disini</a>
-            </div>
+            @if (Route::has('register'))
+                <div class="text-center mt-6 text-sm text-gray-500">
+                    Belum punya akun? <a href="{{ route('register') }}" class="custom-link font-semibold">Daftar
+                        disini</a>
+                </div>
+            @endif
         </form>
     </div>
 </x-guest-layout>
