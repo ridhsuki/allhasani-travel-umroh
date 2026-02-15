@@ -19,6 +19,6 @@ class CompanySetting extends Model
         if ($this->logo_path && Storage::disk('public')->exists($this->logo_path)) {
             return Storage::url($this->logo_path);
         }
-        return asset('assets/img/default-logo.jpeg');
+        return asset('assets/img/default-logo.png');
     }
 }
