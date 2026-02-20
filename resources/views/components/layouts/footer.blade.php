@@ -4,7 +4,8 @@
             <div class="footer-about">
                 <div class="footer-logo">{{ $site_settings->company_name }}</div>
                 <p>Travel umroh terpercaya yang berkomitmen memberikan pelayanan terbaik untuk pengalaman ibadah
-                    yang bermakna. Dengan izin resmi dari Kementerian Agama dan pengalaman lebih dari 10 tahun.</p>
+                    yang bermakna. Dengan izin resmi dari Kementerian Agama dan pengalaman lebih dari
+                    {{ $site_settings->stats['experience'] ?? 0 }} tahun.</p>
                 <div class="social-icons">
                     @if ($site_settings->wa_number_indo)
                         <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $site_settings->wa_number_indo) }}"

@@ -17,6 +17,7 @@ return new class extends Migration {
             $table->integer('max_pax');
             $table->json('features');
             $table->string('bonus')->nullable();
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }

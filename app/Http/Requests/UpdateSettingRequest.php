@@ -32,6 +32,12 @@ class UpdateSettingRequest extends FormRequest
             'branches' => 'nullable|array',
             'branches.*.name' => 'required|string',
             'branches.*.address' => 'required|string',
+
+            'stats' => 'required|array',
+            'stats.jamaah' => 'required|numeric|min:0',
+            'stats.satisfaction' => 'required|numeric|between:0,100',
+            'stats.experience' => 'required|numeric|min:0',
+            'stats.departures' => 'required|numeric|min:0',
         ];
     }
 }

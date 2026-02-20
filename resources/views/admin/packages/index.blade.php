@@ -39,6 +39,9 @@
                                     class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     Durasi & Pax</th>
                                 <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Status</th>
+                                <th scope="col"
                                     class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     Aksi</th>
                             </tr>
@@ -79,6 +82,12 @@
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                         <div><span class="font-medium">{{ $package->duration_days }}</span> Hari</div>
                                         <div>Max <span class="font-medium">{{ $package->max_pax }}</span> Pax</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span
+                                            class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full {{ $package->is_active ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' }}">
+                                            {{ $package->is_active ? 'Aktif' : 'Non-Aktif' }}
+                                        </span>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
                                         <div class="flex justify-center items-center space-x-3">

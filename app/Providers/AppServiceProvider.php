@@ -27,6 +27,10 @@ class AppServiceProvider extends ServiceProvider
                 return CompanySetting::first() ?? new CompanySetting();
             });
 
+            // OPSI 2: Untuk Development (Sedang Coding) - Langsung Database
+            // Gunakan ini dulu agar perubahan selalu REALTIME
+            // $settings = CompanySetting::first() ?? new CompanySetting();
+
             View::share('site_settings', $settings);
         }
     }

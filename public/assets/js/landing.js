@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
-            e.preventDefault(); // Mencegah URL berubah menjadi #id
+            e.preventDefault();
 
             const targetId = this.getAttribute('href');
             if (targetId === '#') return;
@@ -141,34 +141,35 @@ document.addEventListener('DOMContentLoaded', function () {
     if (statsSection && statNumbers.length > 0) {
         let animated = false;
 
-        function animateCounter(element, target, duration = 2000) {
-            let start = 0;
+        function animateCounter(element) {
+            const target = parseInt(element.getAttribute('data-target')) || 0;
+            const suffix = element.getAttribute('data-suffix') || ''; // Ambil % atau +
+
+            const duration = 2000;
             const increment = target / (duration / 16);
+
+            let current = 0;
             const timer = setInterval(() => {
-                start += increment;
-                if (start >= target) {
-                    element.textContent = target === 98 ? target + '%' : target.toLocaleString();
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target.toLocaleString() + suffix;
                     clearInterval(timer);
                 } else {
-                    element.textContent = Math.floor(start).toLocaleString();
+                    element.textContent = Math.floor(current).toLocaleString() + suffix;
                 }
             }, 16);
         }
 
         function checkStatsInView() {
             const rect = statsSection.getBoundingClientRect();
-            // Trigger ketika elemen muncul di viewport
             if (rect.top < window.innerHeight - 100 && !animated) {
-                if (statNumbers[0]) animateCounter(statNumbers[0], 5000);
-                if (statNumbers[1]) animateCounter(statNumbers[1], 98);
-                if (statNumbers[2]) animateCounter(statNumbers[2], 10);
-                if (statNumbers[3]) animateCounter(statNumbers[3], 200);
+                statNumbers.forEach(stat => animateCounter(stat));
                 animated = true;
             }
         }
 
         window.addEventListener('scroll', checkStatsInView);
-        checkStatsInView(); // Cek sekali saat load
+        checkStatsInView();
     }
 
     /* =========================================

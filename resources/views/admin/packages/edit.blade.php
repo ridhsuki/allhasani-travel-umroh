@@ -82,6 +82,15 @@
                             :value="old('bonus', $package->bonus)" />
                     </div>
 
+                    <div class="flex items-center mt-4">
+                        <input id="is_active" name="is_active" type="checkbox" value="1"
+                            {{ old('is_active', $package->is_active) ? 'checked' : '' }}
+                            class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
+                        <label for="is_active" class="ml-2 block text-sm text-gray-900">
+                            {{ __('Tampilkan paket ini di Landing Page?') }}
+                        </label>
+                    </div>
+
                     <div class="flex items-center gap-4 pt-4 border-t">
                         <x-primary-button>{{ __('Update Paket') }}</x-primary-button>
                         <a href="{{ route('packages.index') }}"

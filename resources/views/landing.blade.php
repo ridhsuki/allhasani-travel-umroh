@@ -1,4 +1,4 @@
-<x-layouts.landing title="Beranda - Rahmah Umroh">
+<x-layouts.landing title="Beranda">
 
     <x-landing.hero />
 

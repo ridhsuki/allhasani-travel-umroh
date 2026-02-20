@@ -66,7 +66,14 @@
                         <x-text-input id="bonus" name="bonus" type="text" class="mt-1 block w-full"
                             :value="old('bonus')" placeholder="Gratis City Tour Turki" />
                     </div>
-
+                    <div class="flex items-center mt-4">
+                        <input id="is_active" name="is_active" type="checkbox" value="1" checked
+                            class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
+                        <label for="is_active" class="ml-2 block text-sm text-gray-900">
+                            {{ __('Tampilkan paket ini di Landing Page?') }}
+                        </label>
+                        <x-input-error class="mt-2" :messages="$errors->get('is_active')" />
+                    </div>
                     <div class="flex items-center gap-4">
                         <x-primary-button>{{ __('Simpan Paket') }}</x-primary-button>
                         <a href="{{ route('packages.index') }}" class="text-gray-600 hover:text-gray-900">Batal</a>

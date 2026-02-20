@@ -23,6 +23,7 @@ class PackageController extends Controller
     public function store(StorePackageRequest $request)
     {
         $data = $request->validated();
+        $data['is_active'] = $request->has('is_active');
         $data['slug'] = Str::slug($data['name']);
 
         Package::create($data);
@@ -38,6 +39,7 @@ class PackageController extends Controller
     public function update(UpdatePackageRequest $request, Package $package)
     {
         $data = $request->validated();
+        $data['is_active'] = $request->has('is_active');
         $data['slug'] = Str::slug($data['name']);
 
         $package->update($data);

@@ -23,6 +23,7 @@ class UpdatePackageRequest extends FormRequest
             'features' => ['required', 'array'],
             'features.*' => ['string'],
             'bonus' => ['nullable', 'string', 'max:255'],
+            'is_active' => ['nullable', 'boolean'],
         ];
     }
 

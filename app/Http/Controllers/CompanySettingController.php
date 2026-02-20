@@ -17,9 +17,9 @@ class CompanySettingController extends Controller
 
     public function update(UpdateSettingRequest $request)
     {
-        $setting = CompanySetting::first();
-
         $data = $request->validated();
+
+        $setting = CompanySetting::first();
 
         if ($request->hasFile('logo')) {
             if ($setting && $setting->logo_path) {
@@ -29,6 +29,10 @@ class CompanySettingController extends Controller
         }
 
         unset($data['logo']);
+
+        if (!isset($data['branches'])) {
+            $data['branches'] = [];
+        }
 
         if ($setting) {
             $setting->update($data);

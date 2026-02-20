@@ -19,11 +19,13 @@ class Package extends Model
         'max_pax',
         'features',
         'bonus',
+        'is_active',
     ];
 
     protected $casts = [
         'features' => 'array',
         'price' => 'integer',
+        'is_active' => 'boolean',
     ];
 
     public function getFormattedPriceAttribute()

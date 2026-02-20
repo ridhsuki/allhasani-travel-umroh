@@ -10,13 +10,13 @@ class LandingController extends Controller
 {
     public function __invoke(Request $request)
     {
-        $packages = Package::latest()->get();
+        $packages = Package::where('is_active', true)->latest()->get();
 
         $testimonials = Testimonial::where('is_active', true)->latest()->limit(10)->get();
 
         return view('landing', [
             'packages' => $packages,
-            'testimonials' => $testimonials, 
+            'testimonials' => $testimonials,
         ]);
     }
 }

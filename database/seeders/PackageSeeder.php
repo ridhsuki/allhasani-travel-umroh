@@ -26,6 +26,7 @@ class PackageSeeder extends Seeder
                     'Muthawif Berpengalaman',
                 ],
                 'bonus' => 'Air Zamzam 5 Liter',
+                'is_active' => true,
             ],
             [
                 'name' => 'Umrah Plus Turki 12 Hari',
@@ -42,6 +43,7 @@ class PackageSeeder extends Seeder
                     'Lounge Access Bandara',
                 ],
                 'bonus' => 'Free Kereta Cepat Haramain',
+                'is_active' => true,
             ],
             [
                 'name' => 'Umrah Hemat Akhir Tahun',
@@ -57,6 +59,23 @@ class PackageSeeder extends Seeder
                     'Bus AC Standar',
                 ],
                 'bonus' => null,
+                'is_active' => true,
+            ],
+            [
+                'name' => 'Umrah Hemat Akhir Tahun dummy gak aktif',
+                'badge' => 'hemat',
+                'price' => 21900000,
+                'duration_days' => 9,
+                'max_pax' => 50,
+                'features' => [
+                    'Tiket Pesawat Ekonomi (Transit)',
+                    'Hotel Makkah Bintang 3 (Shuttle)',
+                    'Hotel Madinah Bintang 3',
+                    'Makan 3x Sehari Catering',
+                    'Bus AC Standar',
+                ],
+                'bonus' => null,
+                'is_active' => false,
             ],
         ];
 

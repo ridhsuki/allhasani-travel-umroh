@@ -2,7 +2,8 @@
     <div class="container">
         <div class="section-title">
             <h2>Keunggulan Kami</h2>
-            <p>Mengapa ribuan jamaah mempercayakan perjalanan spiritual mereka kepada Rahmah Umroh?</p>
+            <p>Mengapa ribuan jamaah mempercayakan perjalanan spiritual mereka kepada
+                {{ $site_settings->company_name }}?</p>
         </div>
 
         <div class="features-grid">
@@ -11,7 +12,8 @@
                     <i class="fas fa-award"></i>
                 </div>
                 <h3>Izin Resmi & Terpercaya</h3>
-                <p>Memiliki izin resmi dari Kementerian Agama dengan pengalaman lebih dari 10 tahun memberangkatkan
+                <p>Memiliki izin resmi dari Kementerian Agama dengan pengalaman lebih dari
+                    {{ $site_settings->stats['experience'] ?? 0 }} tahun memberangkatkan
                     jamaah umroh.</p>
             </div>
 

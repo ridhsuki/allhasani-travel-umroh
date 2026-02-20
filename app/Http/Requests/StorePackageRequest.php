@@ -9,7 +9,7 @@ class StorePackageRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return true; // Pastikan user login (handled by middleware route)
+        return true;
     }
 
     public function rules(): array
@@ -23,6 +23,7 @@ class StorePackageRequest extends FormRequest
             'features' => ['required', 'array'],
             'features.*' => ['string'],
             'bonus' => ['nullable', 'string', 'max:255'],
+            'is_active' => ['nullable', 'boolean'],
         ];
     }
 

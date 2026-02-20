@@ -30,7 +30,7 @@ class CompanySettingSeeder extends Seeder
                     'facebook' => 'https://www.facebook.com/allhasani',
                     'instagram' => 'https://www.instagram.com/allhasani_travel',
                     'youtube' => 'https://www.youtube.com/@allhasani_tv',
-                    'tiktok' => 'https://www.tiktok.com/@allhasani_official',
+                    'tiktok' => 'https://www.tiktok.com/@ridhsuki',
                 ],
 
                 'branches' => [
@@ -46,6 +46,13 @@ class CompanySettingSeeder extends Seeder
                         'name' => 'Cabang Makassar',
                         'address' => 'Jl. A.P. Pettarani Ruko Diamond No. 8, Makassar'
                     ]
+                ],
+
+                'stats' => [
+                    'jamaah' => 5000,
+                    'satisfaction' => 98,
+                    'experience' => 10,
+                    'departures' => 200,
                 ],
             ]
         );

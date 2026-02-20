@@ -19,6 +19,7 @@ return new class extends Migration {
             $table->string('email_secondary')->nullable();
             $table->json('social_media')->nullable();
             $table->json('branches')->nullable();
+            $table->json('stats')->nullable();
 
             $table->timestamps();
         });

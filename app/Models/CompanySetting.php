@@ -12,6 +12,7 @@ class CompanySetting extends Model
     protected $casts = [
         'social_media' => 'array',
         'branches' => 'array',
+        'stats' => 'array',
     ];
 
     public function getLogoUrlAttribute()
