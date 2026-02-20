@@ -82,8 +82,8 @@
 
                             @if (isset($packages))
                                 @foreach ($packages as $pkg)
-                                    <option value="{{ $pkg->name }} ({{ $pkg->formatted_price }})">
-                                        {{ $pkg->name }} - {{ $pkg->formatted_price }}
+                                    <option value="{{ $pkg->name }}">
+                                        {{ $pkg->name }}
                                     </option>
                                 @endforeach
                             @endif

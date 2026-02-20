@@ -1,53 +1,33 @@
 @props(['packages'])
 
-<section class="packages" id="packages">
+<section class="packages" id="packages" style="padding: 100px 0;">
     <div class="container">
         <div class="section-title">
             <h2>Pilihan Paket Umroh</h2>
-            <p>Pilih paket ibadah yang sesuai dengan kebutuhan dan budget Anda.</p>
+            <p>Temukan perjalanan ibadah yang dirancang khusus untuk kenyamanan Anda.</p>
         </div>
 
         <div class="packages-grid">
-            @forelse($packages as $package)
+            @forelse($packages->take(6) as $package)
                 <div class="package-card">
-
-                    @if ($package->badge)
-                        <div class="package-badge {{ $package->badge }}">
-                            {{ ucfirst($package->badge) }}
-                        </div>
-                    @endif
-
-                    <div class="package-header">
-                        <h3>{{ $package->name }}</h3>
-                        <div class="package-price">{{ $package->formatted_price }}</div>
-                        <div class="package-duration">
-                            {{ $package->duration_days }} Hari | Max. {{ $package->max_pax }} Jamaah
-                        </div>
+                    <div class="package-image">
+                        @if ($package->image)
+                            <img src="{{ asset('storage/' . $package->image) }}" alt="Paket Umroh {{ $package->name }}"
+                                loading="lazy">
+                        @else
+                            <img src="{{ asset('assets/img/no-image.webp') }}" alt="Default Umroh" loading="lazy">
+                        @endif
                     </div>
 
                     <div class="package-body">
-                        <ul class="package-features">
-                            @foreach ($package->features as $feature)
-                                <li>
-                                    <i class="fas fa-check"></i> {{ $feature }}
-                                </li>
-                            @endforeach
-                        </ul>
+                        <h3>{{ $package->name }}</h3>
 
-                        @if ($package->bonus)
-                            <div class="package-highlight">
-                                <p><strong>Bonus Spesial:</strong> {{ $package->bonus }}</p>
-                            </div>
-                        @endif
+                        <p class="package-excerpt">
+                            {{ Str::limit(strip_tags($package->description), 100, '...') }}
+                        </p>
 
-                        @php
-                            $isExclusive = $package->badge === 'eksklusif';
-                            $btnClass = $isExclusive ? 'btn-gold' : '';
-                            $iconClass = $isExclusive ? 'fas fa-crown' : 'fas fa-shopping-cart';
-                        @endphp
-
-                        <a href="#contact" class="btn {{ $btnClass }}" style="width: 100%; text-align: center; margin-top: 12px;">
-                            <i class="{{ $iconClass }}"></i> Pesan Sekarang
+                        <a href="{{ route('landing.paket.show', $package->slug) }}" class="btn-card-action">
+                            Lihat Detail <i class="fas fa-arrow-right" style="font-size: 0.85rem;"></i>
                         </a>
                     </div>
                 </div>
@@ -57,5 +37,14 @@
                 </div>
             @endforelse
         </div>
+
+        {{-- @if ($packages->count() > 6) --}}
+        <div style="text-align: center; margin-top: 50px;">
+            <a href="{{ route('landing.paket.index') }}" class="btn btn-lihat-semua">
+                Lihat Semua Paket <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+        {{-- @endif --}}
+
     </div>
 </section>

@@ -5,7 +5,7 @@
                 {{ __('Kelola Paket Umroh') }}
             </h2>
             <a href="{{ route('packages.create') }}"
-                class="inline-flex items-center px-4 py-2 bg-indigo-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-indigo-500 focus:bg-indigo-500 active:bg-indigo-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">
+                class="inline-flex items-center px-4 py-2 bg-indigo-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-indigo-500 focus:bg-indigo-500 active:bg-indigo-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150 shadow-sm">
                 + Tambah Paket
             </a>
         </div>
@@ -21,78 +21,67 @@
                 </div>
             @endif
 
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 overflow-x-auto">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg border border-gray-100">
+                <div class="p-6 overflow-x-auto">
                     <table class="min-w-full divide-y divide-gray-200">
                         <thead class="bg-gray-50">
                             <tr>
                                 <th scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Nama Paket</th>
+                                    class="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                                    Gambar
+                                </th>
                                 <th scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Kategori</th>
+                                    class="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                                    Nama Paket
+                                </th>
                                 <th scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Harga</th>
+                                    class="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                                    Deskripsi Singkat
+                                </th>
                                 <th scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Durasi & Pax</th>
+                                    class="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                                    Status
+                                </th>
                                 <th scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Status</th>
-                                <th scope="col"
-                                    class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Aksi</th>
+                                    class="px-6 py-4 text-center text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                                    Aksi
+                                </th>
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-200">
                             @forelse($packages as $package)
-                                <tr class="hover:bg-gray-50 transition-colors">
+                                <tr class="hover:bg-gray-50 transition-colors duration-200">
                                     <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="text-sm font-medium text-gray-900">{{ $package->name }}</div>
-                                        @if ($package->bonus)
-                                            <div class="text-xs text-green-600 mt-1">+ Bonus: {{ $package->bonus }}
+                                        @if ($package->image)
+                                            <img src="{{ asset('storage/' . $package->image) }}"
+                                                alt="{{ $package->name }}" loading="lazy"
+                                                class="h-12 w-16 object-cover rounded-md shadow-sm border border-gray-200">
+                                        @else
+                                            <div
+                                                class="h-12 w-16 bg-gray-100 rounded-md flex items-center justify-center border border-gray-200 text-gray-400">
+                                                <i class="fas fa-image"></i>
                                             </div>
                                         @endif
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
-                                        @php
-                                            $badgeColors = [
-                                                'populer' => 'bg-amber-100 text-amber-800',
-                                                'rekomendasi' => 'bg-blue-100 text-blue-800',
-                                                'eksklusif' => 'bg-purple-100 text-purple-800',
-                                                'hemat' => 'bg-green-100 text-green-800',
-                                            ];
-                                            $colorClass = $badgeColors[$package->badge] ?? 'bg-gray-100 text-gray-800';
-                                        @endphp
-                                        @if ($package->badge)
-                                            <span
-                                                class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full {{ $colorClass }} uppercase">
-                                                {{ $package->badge }}
-                                            </span>
-                                        @else
-                                            <span class="text-gray-400 text-xs">-</span>
-                                        @endif
+                                        <div class="text-sm font-bold text-gray-900">{{ $package->name }}</div>
+                                        <div class="text-xs text-gray-500 mt-1">/paket/{{ $package->slug }}</div>
                                     </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="text-sm font-bold text-gray-900">{{ $package->formatted_price }}
+                                    <td class="px-6 py-4">
+                                        <div class="text-sm text-gray-600 line-clamp-2 max-w-xs">
+                                            {{ Str::limit(strip_tags($package->description), 80, '...') }}
                                         </div>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                        <div><span class="font-medium">{{ $package->duration_days }}</span> Hari</div>
-                                        <div>Max <span class="font-medium">{{ $package->max_pax }}</span> Pax</div>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <span
-                                            class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full {{ $package->is_active ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' }}">
+                                            class="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full {{ $package->is_active ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' }}">
                                             {{ $package->is_active ? 'Aktif' : 'Non-Aktif' }}
                                         </span>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
                                         <div class="flex justify-center items-center space-x-3">
                                             <a href="{{ route('packages.edit', $package) }}"
-                                                class="text-indigo-600 hover:text-indigo-900 bg-indigo-50 px-3 py-1 rounded-md transition hover:bg-indigo-100">
+                                                class="text-indigo-600 hover:text-indigo-900 bg-indigo-50 px-3 py-1.5 rounded-md transition hover:bg-indigo-100">
                                                 Edit
                                             </a>
 
@@ -101,7 +90,7 @@
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit"
-                                                    class="text-red-600 hover:text-red-900 bg-red-50 px-3 py-1 rounded-md transition hover:bg-red-100">
+                                                    class="text-red-600 hover:text-red-900 bg-red-50 px-3 py-1.5 rounded-md transition hover:bg-red-100">
                                                     Hapus
                                                 </button>
                                             </form>
@@ -110,8 +99,10 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="5" class="px-6 py-10 text-center text-gray-500">
-                                        Belum ada data paket. Silakan tambah paket baru.
+                                    <td colspan="5" class="px-6 py-12 text-center">
+                                        <i class="fas fa-folder-open text-gray-300 text-4xl mb-3"></i>
+                                        <p class="text-gray-500 text-sm">Belum ada data paket. Silakan tambah paket
+                                            baru.</p>
                                     </td>
                                 </tr>
                             @endforelse
@@ -120,7 +111,7 @@
                 </div>
 
                 @if ($packages->hasPages())
-                    <div class="p-4 border-t border-gray-200">
+                    <div class="p-4 border-t border-gray-200 bg-gray-50">
                         {{ $packages->links() }}
                     </div>
                 @endif

@@ -11,12 +11,8 @@ return new class extends Migration {
             $table->id();
             $table->string('name');
             $table->string('slug')->unique();
-            $table->enum('badge', ['populer', 'rekomendasi', 'eksklusif', 'hemat'])->nullable();
-            $table->decimal('price', 15, 2);
-            $table->integer('duration_days');
-            $table->integer('max_pax');
-            $table->json('features');
-            $table->string('bonus')->nullable();
+            $table->string('image')->nullable();
+            $table->longText('description');
             $table->boolean('is_active')->default(true);
             $table->timestamps();
         });

@@ -13,23 +13,12 @@ class Package extends Model
     protected $fillable = [
         'name',
         'slug',
-        'badge',
-        'price',
-        'duration_days',
-        'max_pax',
-        'features',
-        'bonus',
+        'image',
+        'description',
         'is_active',
     ];
 
     protected $casts = [
-        'features' => 'array',
-        'price' => 'integer',
         'is_active' => 'boolean',
     ];
-
-    public function getFormattedPriceAttribute()
-    {
-        return 'Rp ' . number_format($this->price, 0, ',', '.');
-    }
 }

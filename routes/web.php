@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', LandingController::class);
 
+Route::get('/paket', [LandingController::class, 'allPackages'])->name('landing.paket.index');
+Route::get('/paket/{slug}', [LandingController::class, 'showPackage'])->name('landing.paket.show');
+
 Route::middleware('auth')->group(function () {
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

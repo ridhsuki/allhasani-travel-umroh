@@ -19,4 +19,17 @@ class LandingController extends Controller
             'testimonials' => $testimonials,
         ]);
     }
+
+    public function allPackages()
+    {
+        $packages = Package::where('is_active', true)->latest()->paginate(9);
+
+        return view('landing.packages-index', compact('packages'));
+    }
+    public function showPackage($slug)
+    {
+        $package = Package::where('slug', $slug)->where('is_active', true)->firstOrFail();
+
+        return view('landing.package-detail', compact('package'));
+    }
 }

@@ -9,6 +9,7 @@
         rel="stylesheet">
 
     <link rel="stylesheet" href="{{ asset('assets/css/landing.css') }}">
+    @stack('styles')
 </head>
 
 <body>

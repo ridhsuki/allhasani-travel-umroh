@@ -1,6 +1,6 @@
  <header id="header">
      <div class="container header-container">
-         <a href="#home" class="logo">
+         <a href="/" class="logo">
              @if ($site_settings->logo_path && Storage::disk('public')->exists($site_settings->logo_path))
                  <img src="{{ asset('storage/' . $site_settings->logo_path) }}"
                      alt="Logo {{ $site_settings->company_name }}"
